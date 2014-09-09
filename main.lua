@@ -1,14 +1,21 @@
 require('gol')
 
 function love.load()
+	iterate_timer = 1
 	lovebird = require('lovebird')
 	gol = Gol:new()
 	pause = true
 end
 
-function love.update()
-	if pause == false then
-		gol:iterate()
+function love.update(dt)
+
+	iterate_timer = iterate_timer - dt
+	if iterate_timer <= 0 then
+		if pause == false then
+			gol:iterate()
+		end
+		local leftover = math.abs(iterate_timer)
+		iterate_timer = 1 - leftover
 	end
 
 	lovebird.update()
