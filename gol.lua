@@ -61,13 +61,26 @@ function Gol:iterate ()
 					Gol.psb[i][j] = true
 				end
 			else
-				if 1 == Gol:testcell(i, j) or Gol:testcell(i, j) == 4 then
+				if Gol:testcell(i, j) == (0 or 1) then
+					Gol.psb[i][j] = false
+				end
+				if Gol:testcell(i, j) == (2 or 3) then
+					Gol.psb[i][j] = true
+				end
+				if Gol:testcell(i, j) == (4 or 5 or 6 or 7 or 8) then
 					Gol.psb[i][j] = false
 				end
 			end
 		end
 	end
 	Gol.sb = Gol.psb
+	Gol.psb = {}
+	for i=0, Gol.xsize do
+		Gol.psb[i] = {}
+		for j=0, Gol.ysize do
+			Gol.psb[i][j] = false
+		end
+	end
 end
 
 function Gol:draw ()
@@ -85,34 +98,29 @@ function Gol:add_true (x, y)
 end
 
 function Gol:testcell (x, y)
-	local a,b,c,d
+	local a,b,c,d,e,f,g,h
 
-	if x-1 < 0 then
-   		a = false
-	else
-		a = Gol.sb[x-1][y]
+	function the_coordinates(x, y)
+		if Gol.sb[x] == nil then
+			return false
+		end
+		if Gol.sb[x][y] == nil then
+			return false
+		end
+		return Gol.sb[x][y]
 	end
 
-	if x+1 > #Gol.sb then
-   		b = false
-	else
-		b = Gol.sb[x+1][y]
-	end
-
-	if y-1 < 0 then
-   		c = false
-	else
-		c = Gol.sb[x][y-1]
-	end
-
-	if y+1 > #Gol.sb[x] then
-   		d = false
-	else
-		d = Gol.sb[x][y+1]
-	end
+	a = the_coordinates(x-1,y-1)
+	b = the_coordinates(x-1,y)
+	c = the_coordinates(x-1,y+1)
+	d = the_coordinates(x,y+1)
+	e = the_coordinates(x,y-1)
+	f = the_coordinates(x+1,y-1)
+	g = the_coordinates(x+1,y)
+	h = the_coordinates(x+1,y+1)
 
 	local ret = 0
-	local ta = {a,b,c,d}
+	local ta = {a,b,c,d,e,f,g,h}
 
 	for k, v in ipairs(ta) do
 		if v then
