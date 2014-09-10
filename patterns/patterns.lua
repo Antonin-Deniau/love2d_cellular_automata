@@ -91,7 +91,7 @@ function Patterns:paste (the_board, x, y)
 	for px=1, #Patterns.list[Patterns.current] do
 		for py=1, #Patterns.list[Patterns.current][px] do
 			if Patterns.list[Patterns.current][px][py] == 1 then
-				the_board:add_true((x - x%5)/5 + px - 1, (y - y%5)/5 + py - 1)
+				the_board:add_true((x - x%5)/5 + px , (y - y%5)/5 + py)
 			end
 		end
 	end
