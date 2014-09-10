@@ -8,6 +8,8 @@ function love.load()
 	board = Board:new(Gol)
 	patterns = Patterns:new()
 	pause = true
+
+	pattern_message = ""
 end
 
 function love.update(dt)
@@ -26,6 +28,7 @@ end
 
 function love.draw()
     board:draw()
+    love.graphics.print( pattern_message, 50, 50 )
 end
 
 function love.keypressed(key)
@@ -43,5 +46,5 @@ function love.mousepressed(x, y, button)
 		patterns:paste (board, x, y)
 	end
 
-	patterns:change (button)
+	pattern_message = patterns:change (button)
 end
