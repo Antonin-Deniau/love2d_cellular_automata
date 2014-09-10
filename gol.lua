@@ -56,20 +56,14 @@ end
 function Gol:iterate ()
 	for i=0, Gol.xsize do
 		for j=0, Gol.ysize do
-			if Gol.sb[i][j] == false then
-				if Gol:testcell(i, j) == 3 then
-					Gol.psb[i][j] = true
-				end
-			else
-				if Gol:testcell(i, j) == (0 or 1) then
-					Gol.psb[i][j] = false
-				end
-				if Gol:testcell(i, j) == (2 or 3) then
-					Gol.psb[i][j] = true
-				end
-				if Gol:testcell(i, j) == (4 or 5 or 6 or 7 or 8) then
-					Gol.psb[i][j] = false
-				end
+			if Gol:testcell(i, j) == 3 then
+				Gol.psb[i][j] = true
+			end
+			if Gol:testcell(i, j) == 2 then
+				Gol.psb[i][j] = Gol.sb[i][j]
+			end
+			if Gol:testcell(i, j) < 2 or Gol:testcell(i, j) > 3 then
+				Gol.psb[i][j] = false
 			end
 		end
 	end
