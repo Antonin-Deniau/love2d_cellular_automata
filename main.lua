@@ -1,11 +1,12 @@
 require('board')
 require('patterns/patterns')
 require('cells/gameoflife')
+require('cells/highlife')
 
 function love.load()
 	iterate_timer = 0.2
 	lovebird = require('libs/lovebird')
-	board = Board:new(Gol)
+	board = Board:new(Hl)
 	patterns = Patterns:new()
 	pause = true
 

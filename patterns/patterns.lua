@@ -74,6 +74,15 @@ function Patterns:initialize ()
 		{0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0 ,0}
 	})
 
+	table.insert(Patterns.name, "replicator")
+	table.insert(Patterns.list,{
+		{0, 0, 1, 1, 1},
+		{0, 1, 0, 0, 1},
+		{1, 0, 0, 0, 1},
+		{1, 0, 0, 1, 0},
+		{1, 1, 1, 0, 0},
+	})
+
 	Patterns.current = 1
 end
 
