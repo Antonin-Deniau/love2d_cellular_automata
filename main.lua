@@ -1,9 +1,12 @@
 require('gol')
+require('patterns')
+
 
 function love.load()
-	iterate_timer = 1
+	iterate_timer = 0.2
 	lovebird = require('lovebird')
 	gol = Gol:new()
+	patterns = Patterns:new()
 	pause = true
 end
 
@@ -15,16 +18,10 @@ function love.update(dt)
 			gol:iterate()
 		end
 		local leftover = math.abs(iterate_timer)
-		iterate_timer = 1 - leftover
+		iterate_timer = 0.2 - leftover
 	end
 
 	lovebird.update()
-
-	if love.mouse.isDown("l") then
-		local x = love.mouse.getX()
-		local y = love.mouse.getY()
-        gol:add_true(x, y)
-    end
 end
 
 function love.draw()
@@ -39,4 +36,12 @@ function love.keypressed(key)
       	pause = true
       end
    end
+end
+
+function love.mousepressed(x, y, button)
+	if button == "l" then
+		patterns:paste (gol, x, y)
+	end
+
+	patterns:change (button)
 end

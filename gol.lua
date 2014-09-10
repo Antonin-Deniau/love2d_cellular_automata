@@ -88,7 +88,7 @@ function Gol:draw ()
 end
 
 function Gol:add_true (x, y)
-	Gol.sb[(x - x%5)/5][(y - y%5)/5] = true
+	Gol.sb[x][y] = true
 end
 
 function Gol:testcell (x, y)
