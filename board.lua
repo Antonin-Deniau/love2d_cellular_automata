@@ -48,6 +48,9 @@ function Board:initialize (cell_class)
 	end
 end
 
+function Board:change_cell (cell)
+	Board.cell_class = cell
+end
 
 function Board:iterate ()
 	for x=1, Board.xsize do

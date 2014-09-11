@@ -7,13 +7,20 @@ require('cells/dayandnight')
 require('cells/labilol')
 
 function love.load()
-	iterate_timer = 0.2
 	lovebird = require('libs/lovebird')
+
+	list_of_cell = {Gol,Hl,Rules,DNN,Labilol}
+
+	list_of_name = {'Game of life' , 'Highlife' , 'Rules (30)' ,'Day and Night' , 'Labilol' }
+
+	current_cell = 1
+
+	pause = true
+	iterate_timer = 0.2
+	pattern_message = ""
+
 	board = Board:new(Gol)
 	patterns = Patterns:new()
-	pause = true
-
-	pattern_message = ""
 end
 
 function love.update(dt)
@@ -32,7 +39,8 @@ end
 
 function love.draw()
     board:draw()
-    love.graphics.print( pattern_message, 50, 50 )
+    love.graphics.print( pattern_message, 5, 5 )
+    love.graphics.print( list_of_name[current_cell] , 5, 15 )
 end
 
 function love.keypressed(key)
@@ -42,6 +50,24 @@ function love.keypressed(key)
       else
       	pause = true
       end
+   end
+
+   if key == "q" then
+		if current_cell == #list_of_cell then
+			current_cell = 1
+		else
+			current_cell = current_cell + 1
+		end
+		board:change_cell(list_of_cell[current_cell])
+   end
+
+   if key == "z" then
+		if current_cell == 1 then
+			current_cell = #list_of_cell
+		else
+			current_cell = current_cell - 1
+		end
+		board:change_cell(list_of_cell[current_cell])
    end
 end
 
