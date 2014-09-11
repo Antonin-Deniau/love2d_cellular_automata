@@ -1,36 +1,51 @@
 local class = require 'libs/middleclass'
 
-Test_Loop = class('Test_Loop')
+TestLoop = class('TestLoop')
 
-function Test_Loop:initialize (state, x, y, board)
+function TestLoop:initialize (state, x, y, board)
 	self.state = state
 	self.x = x
 	self.y = y
 	self.board = board
 end
 
-function Test_Loop:next_state ()
+function TestLoop:next_state ()
 	return self:conditions ()
 end
 
-function Test_Loop:conditions ()
+function TestLoop:conditions ()
+	--material :
+	-- 0 void
+	-- 1 solid
+
+	-- dna :
+	-- 3 front
+	-- 4 left
+	-- 5 right
+	-- 5 new
+
+	if self.state == 0 then
+		return 0
+	end
+
 	if self.state == 1 then
-		if self:neighbourhood () == 3 or self:neighbourhood () == 4 or self:neighbourhood () == 6 or self:neighbourhood () == 7 or self:neighbourhood () == 8 then
-			return 1
+		if self:neighbourhood (2) == 1 or self:neighbourhood (2) == 2 then
+			return 2
 		else
-			return 0
-		end
-	else
-		if self:neighbourhood () == 3 or self:neighbourhood () == 6 or self:neighbourhood () == 7 or self:neighbourhood () == 8 then
 			return 1
-		else
-			return 0
 		end
+	end
+
+	if self.state == 2 then
+		return 3
+	end
+	if self.state == 3 then
+		return 1
 	end
 end
 
-function Test_Loop:neighbourhood ()
-	local a,b,c,d,e,f,g,h
+function TestLoop:neighbourhood (state)
+	local a,b,c,d
 
 	function coordinate_state (x, y)
 		if self.board.present[x] == nil then
@@ -42,20 +57,16 @@ function Test_Loop:neighbourhood ()
 		return self.board.present[x][y].state
 	end
 
-	a = coordinate_state(self.x-1,self.y-1)
-	b = coordinate_state(self.x-1,self.y)
-	c = coordinate_state(self.x-1,self.y+1)
-	d = coordinate_state(self.x,self.y+1)
-	e = coordinate_state(self.x,self.y-1)
-	f = coordinate_state(self.x+1,self.y-1)
-	g = coordinate_state(self.x+1,self.y)
-	h = coordinate_state(self.x+1,self.y+1)
+	a = coordinate_state(self.x-1,self.y)
+	b = coordinate_state(self.x,self.y+1)
+	c = coordinate_state(self.x,self.y-1)
+	d = coordinate_state(self.x+1,self.y)
 
 	local ret = 0
-	local ta = {a,b,c,d,e,f,g,h}
+	local ta = {a,b,c,d}
 
 	for k, v in ipairs(ta) do
-		if v == 1 then
+		if v == state then
 			ret = ret + 1
 		end
 	end
