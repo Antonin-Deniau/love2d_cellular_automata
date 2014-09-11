@@ -2,16 +2,18 @@ require('board')
 require('patterns/patterns')
 require('cells/gameoflife')
 require('cells/highlife')
-require('cells/rules')
+require('cells/rule30')
+require('cells/rule90')
+require('cells/rule110')
 require('cells/dayandnight')
 require('cells/labilol')
 
 function love.load()
 	lovebird = require('libs/lovebird')
 
-	list_of_cell = {Gol,Hl,Rules,DNN,Labilol}
+	list_of_cell = {Gol,Hl,DNN,Labilol, Rule30,Rule90,Rule110}
 
-	list_of_name = {'Game of life' , 'Highlife' , 'Rules (30)' ,'Day and Night' , 'Labilol' }
+	list_of_name = {'Game of life' , 'Highlife' , 'Day and Night' , 'Labilol', 'Rule30','Rule90','Rule110' }
 
 	current_cell = 1
 
