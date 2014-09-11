@@ -8,13 +8,17 @@ require('cells/rule110')
 require('cells/dayandnight')
 require('cells/labilol')
 require('cells/wireworld')
+require('cells/amoeba')
+require('cells/gnarl')
+require('cells/replicator')
+require('cells/serviettes')
 
 function love.load()
 	lovebird = require('libs/lovebird')
 
-	list_of_cell = {Gol, Hl, DNN, Labilol,  Rule30, Rule90, Rule110, WireWorld}
+	list_of_cell = {Gol, Hl, DNN, Labilol,  Rule30, Rule90, Rule110, WireWorld, Amoeba, Gnarl, Replicator,Serviettes}
 
-	list_of_name = {'Game of life' , 'Highlife' , 'Day and Night' , 'Labilol', 'Rule30','Rule90', 'Rule110','Wireworld' }
+	list_of_name = {'Game of life' , 'Highlife' , 'Day and Night' , 'Labilol', 'Rule30','Rule90', 'Rule110','Wireworld', 'Amoeba', 'Gnarl', 'Replicator','Serviettes'}
 
 	current_cell = 1
 
