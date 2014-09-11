@@ -21,13 +21,9 @@ function Labilol:conditions ()
 			return 0
 		end
 	else
-		if self:neighbourhood () == (0 or 1) then
-			return 0
-		end
-		if self:neighbourhood () == (2 or 3 or 4) then
+		if self:neighbourhood () >= 1 and self:neighbourhood () <= 5 then
 			return 1
-		end
-		if self:neighbourhood () == (5 or 6 or 7 or 8) then
+		else
 			return 0
 		end
 	end
