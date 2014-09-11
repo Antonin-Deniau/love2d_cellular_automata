@@ -11,6 +11,21 @@ function Patterns:initialize ()
 		{1}
 	})
 
+	table.insert(Patterns.name, "electron")
+	table.insert(Patterns.list,{
+		{2}
+	})
+
+	table.insert(Patterns.name, "dot")
+	table.insert(Patterns.list,{
+		{1}
+	})
+
+	table.insert(Patterns.name, "dot")
+	table.insert(Patterns.list,{
+		{1}
+	})
+
 	table.insert(Patterns.name, "square")
 	table.insert(Patterns.list,{
 		{1, 1},
