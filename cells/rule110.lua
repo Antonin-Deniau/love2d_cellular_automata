@@ -7,7 +7,7 @@ function Rule110:initialize (state, x, y, board)
 	self.x = x
 	self.y = y
 	self.board = board
-	self.the_rules = {false,true,true,false,true,true,true,false}
+	self.the_rules = {0,1,1,0,1,1,1,0}
 end
 
 function Rule110:next_state ()
@@ -15,35 +15,35 @@ function Rule110:next_state ()
 end
 
 function Rule110:conditions ()
-	if self.state == false then
+	if self.state == 0 then
 		local a,b,c = self:neighbourhood ()
 
-		if a and b and c then
+		if a == 1 and b == 1 and c == 1 then
 			return self.the_rules[1]
 		end
-		if a and b and c == false then
+		if a == 1 and b == 1 and c == 0 then
 			return self.the_rules[2]
 		end
-		if a and b == false and c then
+		if a == 1 and b == 0 and c == 1 then
 			return self.the_rules[3]
 		end
-		if a and b == false and c == false then
+		if a == 1 and b == 0 and c == 0 then
 			return self.the_rules[4]
 		end
-		if a == false and b and c then
+		if a == 0 and b == 1 and c == 1 then
 			return self.the_rules[5]
 		end
-		if a == false and b and c == false then
+		if a == 0 and b == 1 and c == 0 then
 			return self.the_rules[6]
 		end
-		if a == false and b == false and c then
+		if a == 0 and b == 0 and c == 1 then
 			return self.the_rules[7]
 		end
-		if a == false  and b == false  and c == false  then
+		if a == 0  and b == 0  and c == 0  then
 			return self.the_rules[8]
 		end
 	else
-		return true
+		return 1
 	end
 end
 
@@ -52,10 +52,10 @@ function Rule110:neighbourhood ()
 
 	function coordinate_state (x, y)
 		if self.board.present[x] == nil then
-			return false
+			return 0
 		end
 		if self.board.present[x][y] == nil then
-			return false
+			return 0
 		end
 		return self.board.present[x][y].state
 	end

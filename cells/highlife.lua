@@ -14,17 +14,17 @@ function Hl:next_state ()
 end
 
 function Hl:conditions ()
-	if self.state then
+	if self.state == 1 then
 		if self:neighbourhood () == 2 or self:neighbourhood () == 3 then
-			return true
+			return 1
 		else
-			return false
+			return 0
 		end
 	else
 		if self:neighbourhood () == 3 or self:neighbourhood () == 6 then
-			return true
+			return 1
 		else
-			return false
+			return 0
 		end
 	end
 end
@@ -34,10 +34,10 @@ function Hl:neighbourhood ()
 
 	function coordinate_state (x, y)
 		if self.board.present[x] == nil then
-			return false
+			return 0
 		end
 		if self.board.present[x][y] == nil then
-			return false
+			return 0
 		end
 		return self.board.present[x][y].state
 	end
@@ -55,7 +55,7 @@ function Hl:neighbourhood ()
 	local ta = {a,b,c,d,e,f,g,h}
 
 	for k, v in ipairs(ta) do
-		if v then
+		if v == 1 then
 			ret = ret + 1
 		end
 	end

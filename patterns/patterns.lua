@@ -117,9 +117,7 @@ end
 function Patterns:paste (the_board, x, y)
 	for px=1, #Patterns.list[Patterns.current] do
 		for py=1, #Patterns.list[Patterns.current][px] do
-			if Patterns.list[Patterns.current][px][py] == 1 then
-				the_board:add_true((x - x%5)/5 + px , (y - y%5)/5 + py)
-			end
+			the_board:add_cell((x - x%5)/5 + px , (y - y%5)/5 + py, Patterns.list[Patterns.current][px][py])
 		end
 	end
 end

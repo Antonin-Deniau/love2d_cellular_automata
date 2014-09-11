@@ -11,7 +11,7 @@ require('cells/labilol')
 function love.load()
 	lovebird = require('libs/lovebird')
 
-	list_of_cell = {Gol,Hl,DNN,Labilol, Rule30,Rule90,Rule110}
+	list_of_cell = {Gol, Hl, DNN, Labilol,  Rule30, Rule90, Rule110}
 
 	list_of_name = {'Game of life' , 'Highlife' , 'Day and Night' , 'Labilol', 'Rule30','Rule90','Rule110' }
 
@@ -40,7 +40,8 @@ function love.update(dt)
 end
 
 function love.draw()
-    board:draw()
+	board:draw()
+	love.graphics.setColor( 255,255,255)
     love.graphics.print( pattern_message, 5, 5 )
     love.graphics.print( list_of_name[current_cell] , 5, 15 )
 end

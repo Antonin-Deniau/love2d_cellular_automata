@@ -7,35 +7,20 @@ function Board:initialize (cell_class)
 	Board.ysize = 120
 	Board.cell_class = cell_class
 
-	local vertices = {
-        {
-            0, 0,
-            0, 0,
-            255, 255, 255
-        },
-        {
-            4, 0,
-            0, 0,
-            255, 255, 255
-        },
-        {
-            4, 4,
-            0, 0,
-            255, 255, 255
-        },
-        {
-            0, 4,
-            0, 0,
-            255, 255, 255
-        },
-    }
-	Board.cell = love.graphics.newMesh( vertices, nil, 'fan' )
+	Board.colors = {
+		{0,0,0},
+		{255,255,255},
+		{155,48,255},
+		{0,255,127},
+		{255, 185, 15},
+		{255, 48, 48}
+	}
 
 	Board.present = {}
 	for x=1, Board.xsize do
 		Board.present[x] = {}
 		for y=1, Board.ysize do
-			Board.present[x][y] = Board.cell_class:new(false, x, y, self)
+			Board.present[x][y] = Board.cell_class:new(0, x, y, self)
 		end
 	end
 
@@ -43,7 +28,7 @@ function Board:initialize (cell_class)
 	for x=1, Board.xsize do
 		Board.future[x] = {}
 		for y=1, Board.ysize do
-			Board.future[x][y] = Board.cell_class:new(false, x, y, self)
+			Board.future[x][y] = Board.cell_class:new(0, x, y, self)
 		end
 	end
 end
@@ -64,7 +49,7 @@ function Board:iterate ()
 	for x=1, Board.xsize do
 		Board.future[x] = {}
 		for y=1, Board.ysize do
-			Board.future[x][y] = Board.cell_class:new(false, x, y, self)
+			Board.future[x][y] = Board.cell_class:new(0, x, y, self)
 		end
 	end
 end
@@ -73,13 +58,14 @@ function Board:draw ()
 	for x=1, Board.xsize do
 		for y=1, Board.ysize do
 			if Board.present[x][y].state then
-				love.graphics.draw(Board.cell, (x * 5) - 5, (y * 5) -5)
+			    love.graphics.setColor( Board.colors[Board.present[x][y].state + 1][1], Board.colors[Board.present[x][y].state + 1][2], Board.colors[Board.present[x][y].state + 1][3])
+			    love.graphics.rectangle( "fill", (x * 5) - 5, (y * 5) -5, 4, 4 )
 			end
 		end
 	end
 end
 
-function Board:add_true (x, y)
-	Board.present[x][y] = Board.cell_class:new(true, x, y, self)
+function Board:add_cell (x, y, state)
+	Board.present[x][y] = Board.cell_class:new(state, x, y, self)
 end
 
