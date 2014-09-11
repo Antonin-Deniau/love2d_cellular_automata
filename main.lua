@@ -1,11 +1,10 @@
 require('board')
 require('patterns/patterns')
 require('cells/gameoflife')
---require('cells/highlife')
---require('cells/rule30')
---require('cells/rule54')
---require('cells/rule90')
---require('cells/dayandnight')
+require('cells/highlife')
+require('cells/rules')
+require('cells/dayandnight')
+require('cells/labilol')
 
 function love.load()
 	iterate_timer = 0.2
