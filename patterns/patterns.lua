@@ -116,7 +116,7 @@ function Patterns:initialize ()
 		{0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0},
 	})
 
-	table.insert(Patterns.name, "Langton's loops DNA")
+	table.insert(Patterns.name, "DNA")
 	table.insert(Patterns.list,{
 		{0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0},
 		{0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},

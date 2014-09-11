@@ -1,19 +1,19 @@
 local class = require 'libs/middleclass'
 
-Anto_loop = class('Anto_loop')
+Test_Loop = class('Test_Loop')
 
-function Anto_loop:initialize (state, x, y, board)
+function Test_Loop:initialize (state, x, y, board)
 	self.state = state
 	self.x = x
 	self.y = y
 	self.board = board
 end
 
-function Anto_loop:next_state ()
+function Test_Loop:next_state ()
 	return self:conditions ()
 end
 
-function Anto_loop:conditions ()
+function Test_Loop:conditions ()
 	if self.state == 1 then
 		if self:neighbourhood () == 3 or self:neighbourhood () == 4 or self:neighbourhood () == 6 or self:neighbourhood () == 7 or self:neighbourhood () == 8 then
 			return 1
@@ -29,7 +29,7 @@ function Anto_loop:conditions ()
 	end
 end
 
-function Anto_loop:neighbourhood ()
+function Test_Loop:neighbourhood ()
 	local a,b,c,d,e,f,g,h
 
 	function coordinate_state (x, y)
