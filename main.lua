@@ -44,7 +44,7 @@ function love.draw()
 	board:draw()
 	love.graphics.setColor( 255,255,255)
     love.graphics.print( pattern_message, 5, 5 )
-    love.graphics.print( list_of_name[current_cell] , 5, 15 )
+    love.graphics.print( list_of_name[current_cell] , 5, 20 )
 end
 
 function love.keypressed(key)
