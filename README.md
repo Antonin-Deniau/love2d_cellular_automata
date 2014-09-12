@@ -1,11 +1,11 @@
 love2d_lifegame
 ===============
 
-A lifegame created with love2d
+A cellular automata created with love2d
 
 space to pause
 
-a -- q to change cellular automaton
+a -- q to change cellular automata type
 
 Mousewheel to change pre-made patterns
 
@@ -21,3 +21,4 @@ Other vaiables cellular automaton are :
 * Elementary automaton 30
 * Serviettes
 * WireWorld
+* Evoloop
