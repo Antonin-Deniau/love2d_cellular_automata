@@ -2,6 +2,8 @@ local class = require 'libs/middleclass'
 
 Rule30 = class('Rule30')
 
+require 'patterns/rule30'
+
 function Rule30:initialize (state, x, y, board)
 	self.state = state
 	self.x = x

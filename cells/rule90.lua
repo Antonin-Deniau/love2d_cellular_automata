@@ -2,6 +2,8 @@ local class = require 'libs/middleclass'
 
 Rule90 = class('Rule90')
 
+require 'patterns/rule90'
+
 function Rule90:initialize (state, x, y, board)
 	self.state = state
 	self.x = x

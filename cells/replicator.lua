@@ -2,6 +2,8 @@ local class = require 'libs/middleclass'
 
 Replicator = class('Replicator')
 
+require 'patterns/replicator'
+
 function Replicator:initialize (state, x, y, board)
 	self.state = state
 	self.x = x

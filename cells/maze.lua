@@ -2,6 +2,8 @@ local class = require 'libs/middleclass'
 
 Maze = class('Maze')
 
+require 'patterns/maze'
+
 function Maze:initialize (state, x, y, board)
 	self.state = state
 	self.x = x

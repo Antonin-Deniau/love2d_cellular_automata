@@ -2,6 +2,8 @@ local class = require 'libs/middleclass'
 
 Evoloop = class('Evoloop')
 
+require 'patterns/evoloop'
+
 function Evoloop:initialize (state, x, y, board)
 	self.state = state
 	self.x = x

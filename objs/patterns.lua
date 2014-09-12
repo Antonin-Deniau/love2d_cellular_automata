@@ -2,10 +2,9 @@ local class = require 'libs/middleclass'
 
 Patterns = class('Patterns')
 
-function Patterns:initialize ()
-	Patterns.list = {}
-	Patterns.name = {}
-
+function Patterns:initialize (obj)
+	Patterns:load(obj)
+--[[
 	table.insert(Patterns.name, "dot")
 	table.insert(Patterns.list,{
 		{1}
@@ -138,10 +137,19 @@ function Patterns:initialize ()
 		{1, 0, 0, 1, 0},
 		{1, 1, 1, 0, 0},
 	})
-
-	Patterns.current = 1
+]]--
 end
 
+function Patterns:load (theobj)
+	Patterns.list = {}
+	Patterns.name = {}
+	Patterns.current = 1
+	for i=0, #theobj.patterns.list do
+
+		table.insert(Patterns.name, theobj.patterns.name[i])
+		table.insert(Patterns.list, theobj.patterns.list[i])
+	end
+end
 
 function Patterns:paste (the_board, x, y)
 	for px=1, #Patterns.list[Patterns.current] do

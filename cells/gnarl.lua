@@ -2,6 +2,8 @@ local class = require 'libs/middleclass'
 
 Gnarl = class('Gnarl')
 
+require 'patterns/gnarl'
+
 function Gnarl:initialize (state, x, y, board)
 	self.state = state
 	self.x = x

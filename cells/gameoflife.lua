@@ -1,6 +1,7 @@
 local class = require 'libs/middleclass'
-
 Gol = class('Gol')
+
+require 'patterns/gol'
 
 function Gol:initialize (state, x, y, board)
 	self.state = state
@@ -62,3 +63,4 @@ function Gol:neighbourhood ()
 
 	return ret
 end
+

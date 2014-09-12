@@ -2,6 +2,8 @@ local class = require 'libs/middleclass'
 
 Serviettes = class('Serviettes')
 
+require 'patterns/serviettes'
+
 function Serviettes:initialize (state, x, y, board)
 	self.state = state
 	self.x = x

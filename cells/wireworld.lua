@@ -2,6 +2,8 @@ local class = require 'libs/middleclass'
 
 WireWorld = class('WireWorld')
 
+require 'patterns/wireworld'
+
 function WireWorld:initialize (state, x, y, board)
 	self.state = state
 	self.x = x

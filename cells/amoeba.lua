@@ -2,6 +2,9 @@ local class = require 'libs/middleclass'
 
 Amoeba = class('Amoeba')
 
+require 'patterns/amoeba'
+
+
 function Amoeba:initialize (state, x, y, board)
 	self.state = state
 	self.x = x

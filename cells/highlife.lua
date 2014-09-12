@@ -2,6 +2,8 @@ local class = require 'libs/middleclass'
 
 Hl = class('Hl')
 
+require 'patterns/highlife'
+
 function Hl:initialize (state, x, y, board)
 	self.state = state
 	self.x = x

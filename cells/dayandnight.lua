@@ -2,6 +2,8 @@ local class = require 'libs/middleclass'
 
 DNN = class('DNN')
 
+require 'patterns/dayandnight'
+
 function DNN:initialize (state, x, y, board)
 	self.state = state
 	self.x = x
