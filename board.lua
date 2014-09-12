@@ -16,7 +16,8 @@ function Board:initialize (cell_class)
 		{255, 255, 0},
 		{255, 0, 255},
 		{0, 255, 255},
-		{255, 255, 48}
+		{255, 255, 48},
+		{255, 48, 48}
 	}
 
 	Board.present = {}

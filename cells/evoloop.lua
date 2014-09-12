@@ -62,14 +62,15 @@ Evoloop.static.transitions = {
 
 
 function Evoloop:conditions ()
-	local a,b,c,d,e = self:neighbourhood()
+
+	local a,b,c,d,e = self:neighbourhood_state()
 
 	for k, v in pairs(Evoloop.transitions) do
 		if v[1][1] == a then
-			if v[2][1] == b then
-				if v[3][1] == c then
-					if v[4][1] == d then
-						if v[5] == e then
+			if v[1][2] == b then
+				if v[1][3] == c then
+					if v[1][4] == d then
+						if v[1][5] == e then
 							return v[2]
 						end
 					end
@@ -77,10 +78,40 @@ function Evoloop:conditions ()
 			end
 		end
 	end
-	return false
+
+	if self.state == 8 then
+		return 0
+	end
+
+	if self:neighbourhood_eight() >= 1 then
+		if self:neighbourhood_other() >= 1 then
+			if self.state == 0 or self.state == 1 then
+				return 8
+			end
+		else
+			if self.state == 0 then
+				return 0
+			end
+			if self.state == 1 then
+				return 1
+			end
+		end
+		if self.state == 2 or self.state == 3 or self.state == 5 then
+			return 0
+		end
+		if self.state == 4 or self.state == 6 or self.state == 7 then
+			return 0
+		end
+	end
+
+	if self.state == 0 then
+		return 0
+	end
+
+	return 8
 end
 
-function Evoloop:neighbourhood (state)
+function Evoloop:neighbourhood_other ()
 	local a,b,c,d
 
 	function coordinate_state (x, y)
@@ -93,10 +124,67 @@ function Evoloop:neighbourhood (state)
 		return self.board.present[x][y].state
 	end
 
-	a = coordinate_state(self.x-1,self.y)
-	b = coordinate_state(self.x,self.y+1)
-	c = coordinate_state(self.x,self.y-1)
-	d = coordinate_state(self.x+1,self.y)
+	local ret = 0
+	local a = coordinate_state(self.x,self.y-1)
+	local b = coordinate_state(self.x+1,self.y)
+	local c = coordinate_state(self.x,self.y+1)
+	local d = coordinate_state(self.x-1,self.y)
+
+	for k, v in pairs({a,b,c,d}) do
+		if v == 2 or  v == 3  or  v == 4  or  v == 5 or  v == 6  or v == 7  then
+			ret = ret + 1
+		end
+	end
+
+	return ret
+end
+
+function Evoloop:neighbourhood_eight ()
+	local a,b,c,d
+
+	function coordinate_state (x, y)
+		if self.board.present[x] == nil then
+			return 0
+		end
+		if self.board.present[x][y] == nil then
+			return 0
+		end
+		return self.board.present[x][y].state
+	end
+
+	local ret = 0
+	local a = coordinate_state(self.x,self.y-1)
+	local b = coordinate_state(self.x+1,self.y)
+	local c = coordinate_state(self.x,self.y+1)
+	local d = coordinate_state(self.x-1,self.y)
+
+	for k, v in pairs({a,b,c,d}) do
+		if v == 8 then
+			ret = ret + 1
+		end
+	end
+
+	return ret
+end
+
+
+function Evoloop:neighbourhood_state ()
+	local a,b,c,d
+
+	function coordinate_state (x, y)
+		if self.board.present[x] == nil then
+			return 0
+		end
+		if self.board.present[x][y] == nil then
+			return 0
+		end
+		return self.board.present[x][y].state
+	end
+
+	local a = coordinate_state(self.x,self.y-1)
+	local b = coordinate_state(self.x+1,self.y)
+	local c = coordinate_state(self.x,self.y+1)
+	local d = coordinate_state(self.x-1,self.y)
 
 
 	return {self.state, a,b,c,d}
