@@ -66,16 +66,17 @@ function Evoloop:conditions ()
 	local a,b,c,d,e = self:neighbourhood_state()
 
 	for k, v in pairs(Evoloop.transitions) do
-		if v[1][1] == a then
-			if v[1][2] == b then
-				if v[1][3] == c then
-					if v[1][4] == d then
-						if v[1][5] == e then
-							return v[2]
-						end
-					end
-				end
-			end
+		if v[1][1] == a and v[1][2] == b and v[1][3] == c and v[1][4] == d and v[1][5] == e then
+			return v[2]
+		end
+		if v[1][1] == a and v[1][2] == e and v[1][3] == b and v[1][4] == c and v[1][5] == d then
+			return v[2]
+		end
+		if v[1][1] == a and v[1][2] == d and v[1][3] == e and v[1][4] == b and v[1][5] == c then
+			return v[2]
+		end
+		if v[1][1] == a and v[1][2] == c and v[1][3] == d and v[1][4] == e and v[1][5] == b then
+			return v[2]
 		end
 	end
 
@@ -100,7 +101,7 @@ function Evoloop:conditions ()
 			return 0
 		end
 		if self.state == 4 or self.state == 6 or self.state == 7 then
-			return 0
+			return 1
 		end
 	end
 
@@ -125,9 +126,9 @@ function Evoloop:neighbourhood_other ()
 	end
 
 	local ret = 0
-	local a = coordinate_state(self.x,self.y-1)
+	local a = coordinate_state(self.x,self.y+1)
 	local b = coordinate_state(self.x+1,self.y)
-	local c = coordinate_state(self.x,self.y+1)
+	local c = coordinate_state(self.x,self.y-1)
 	local d = coordinate_state(self.x-1,self.y)
 
 	for k, v in pairs({a,b,c,d}) do
@@ -153,9 +154,9 @@ function Evoloop:neighbourhood_eight ()
 	end
 
 	local ret = 0
-	local a = coordinate_state(self.x,self.y-1)
+	local a = coordinate_state(self.x,self.y+1)
 	local b = coordinate_state(self.x+1,self.y)
-	local c = coordinate_state(self.x,self.y+1)
+	local c = coordinate_state(self.x,self.y-1)
 	local d = coordinate_state(self.x-1,self.y)
 
 	for k, v in pairs({a,b,c,d}) do
@@ -187,5 +188,12 @@ function Evoloop:neighbourhood_state ()
 	local d = coordinate_state(self.x-1,self.y)
 
 
-	return {self.state, a,b,c,d}
+	return self.state, a,b,c,d
 end
+
+
+
+
+
+
+

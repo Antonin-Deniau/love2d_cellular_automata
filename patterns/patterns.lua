@@ -146,7 +146,7 @@ end
 function Patterns:paste (the_board, x, y)
 	for px=1, #Patterns.list[Patterns.current] do
 		for py=1, #Patterns.list[Patterns.current][px] do
-			the_board:add_cell((x - x%5)/5 + px , (y - y%5)/5 + py, Patterns.list[Patterns.current][px][py])
+			the_board:add_cell((x - x%5)/5 + py , (y - y%5)/5 + px, Patterns.list[Patterns.current][px][py])
 		end
 	end
 end
