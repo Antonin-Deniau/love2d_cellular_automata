@@ -1,19 +1,19 @@
 local class = require 'libs/middleclass'
 
-Labilol = class('Labilol')
+Maze = class('Maze')
 
-function Labilol:initialize (state, x, y, board)
+function Maze:initialize (state, x, y, board)
 	self.state = state
 	self.x = x
 	self.y = y
 	self.board = board
 end
 
-function Labilol:next_state ()
+function Maze:next_state ()
 	return self:conditions ()
 end
 
-function Labilol:conditions ()
+function Maze:conditions ()
 	if self.state == 0 then
 		if self:neighbourhood () == 3 then
 			return 1
@@ -30,7 +30,7 @@ function Labilol:conditions ()
 	return self.state
 end
 
-function Labilol:neighbourhood ()
+function Maze:neighbourhood ()
 	local a,b,c,d,e,f,g,h
 
 	function coordinate_state (x, y)
