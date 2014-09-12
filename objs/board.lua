@@ -7,19 +7,6 @@ function Board:initialize (cell_class)
 	Board.ysize = 120
 	Board.cell_class = cell_class
 
-	Board.colors = {
-		{0,0,0},
-		{0,0,255},
-		{255,0,0},
-		{0,255,0},
-		{0, 185, 15},
-		{255, 255, 0},
-		{255, 0, 255},
-		{0, 255, 255},
-		{255, 255, 48},
-		{255, 48, 48}
-	}
-
 	Board.present = {}
 	for x=1, Board.xsize do
 		Board.present[x] = {}
@@ -62,7 +49,12 @@ function Board:draw ()
 	for x=1, Board.xsize do
 		for y=1, Board.ysize do
 			if Board.present[x][y].state then
-			    love.graphics.setColor( Board.colors[Board.present[x][y].state + 1][1], Board.colors[Board.present[x][y].state + 1][2], Board.colors[Board.present[x][y].state + 1][3])
+				local the_cell = Board.present[x][y]
+				if the_cell.state  < #the_cell.colors then
+			    	love.graphics.setColor( the_cell.colors[the_cell.state + 1][1], the_cell.colors[the_cell.state + 1][2], the_cell.colors[the_cell.state + 1][3])
+				else
+					the_cell.state = 0
+				end
 			    love.graphics.rectangle( "fill", (x * 5) - 5, (y * 5) -5, 4, 4 )
 			end
 		end

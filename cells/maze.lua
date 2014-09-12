@@ -11,6 +11,11 @@ function Maze:initialize (state, x, y, board)
 	self.board = board
 end
 
+Maze.colors = {
+	{0,0,0},
+	{255,255,255}
+}
+
 function Maze:next_state ()
 	return self:conditions ()
 end

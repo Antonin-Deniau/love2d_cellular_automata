@@ -9,7 +9,7 @@ table.insert(WireWorld.static.patterns.list,{
 
 table.insert(WireWorld.static.patterns.name, "electron")
 table.insert(WireWorld.static.patterns.list,{
-	{1}
+	{2}
 })
 
 

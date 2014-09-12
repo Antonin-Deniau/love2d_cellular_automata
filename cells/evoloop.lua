@@ -11,6 +11,19 @@ function Evoloop:initialize (state, x, y, board)
 	self.board = board
 end
 
+Evoloop.colors = {
+	{0,0,0},
+	{0,0,255},
+	{255,0,0},
+	{0,255,0},
+	{0, 185, 15},
+	{255, 255, 0},
+	{255, 0, 255},
+	{0, 255, 255},
+	{255, 255, 48},
+	{255, 48, 48}
+}
+
 function Evoloop:next_state ()
 	return self:conditions ()
 end

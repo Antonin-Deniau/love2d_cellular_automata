@@ -10,6 +10,11 @@ function Gol:initialize (state, x, y, board)
 	self.board = board
 end
 
+Gol.colors = {
+	{0,0,0},
+	{255,255,255}
+}
+
 function Gol:next_state ()
 	return self:conditions ()
 end

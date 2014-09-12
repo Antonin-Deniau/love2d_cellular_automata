@@ -11,6 +11,11 @@ function Serviettes:initialize (state, x, y, board)
 	self.board = board
 end
 
+Serviettes.colors = {
+	{0,0,0},
+	{255,255,255}
+}
+
 function Serviettes:next_state ()
 	return self:conditions ()
 end

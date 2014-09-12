@@ -11,6 +11,13 @@ function WireWorld:initialize (state, x, y, board)
 	self.board = board
 end
 
+WireWorld.colors = {
+	{0,0,0},
+	{0,255,0},
+	{0,0,255},
+	{255,0,0}
+}
+
 function WireWorld:next_state ()
 	return self:conditions ()
 end

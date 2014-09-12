@@ -12,6 +12,11 @@ function Rule110:initialize (state, x, y, board)
 	self.the_rules = {0,1,1,0,1,1,1,0}
 end
 
+Rule110.colors = {
+	{0,0,0},
+	{255,255,255}
+}
+
 function Rule110:next_state ()
 	return self:conditions ()
 end

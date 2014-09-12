@@ -12,6 +12,24 @@ function Amoeba:initialize (state, x, y, board)
 	self.board = board
 end
 
+Amoeba.colors = {
+	{0,0,0},
+	{255,255,255}
+}
+--[[
+Board.colors = {
+	{0,0,0},
+	{0,0,255},
+	{255,0,0},
+	{0,255,0},
+	{0, 185, 15},
+	{255, 255, 0},
+	{255, 0, 255},
+	{0, 255, 255},
+	{255, 255, 48},
+	{255, 48, 48}
+}
+]]
 function Amoeba:next_state ()
 	return self:conditions ()
 end

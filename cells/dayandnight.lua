@@ -11,6 +11,11 @@ function DNN:initialize (state, x, y, board)
 	self.board = board
 end
 
+DNN.colors = {
+	{0,0,0},
+	{255,255,255}
+}
+
 function DNN:next_state ()
 	return self:conditions ()
 end

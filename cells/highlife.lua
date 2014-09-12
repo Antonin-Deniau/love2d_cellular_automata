@@ -11,6 +11,11 @@ function Hl:initialize (state, x, y, board)
 	self.board = board
 end
 
+Hl.colors = {
+	{0,0,0},
+	{255,255,255}
+}
+
 function Hl:next_state ()
 	return self:conditions ()
 end
