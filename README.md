@@ -1,4 +1,4 @@
-love2d_lifegame
+love2d cellular automata
 ===============
 
 A cellular automata created with love2d
