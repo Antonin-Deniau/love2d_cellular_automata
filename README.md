@@ -9,7 +9,8 @@ a -- q to change cellular automata type
 
 Mousewheel to change pre-made patterns
 
-Other vaiables cellular automaton are :
+Avaiables cellular automaton are :
+* Game of Life
 * Amoeba
 * Day an night
 * Gnarl
