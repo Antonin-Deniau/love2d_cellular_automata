@@ -25,19 +25,13 @@ function love.load()
 	patterns = Patterns:new(Gol)
 
 	pause = true
-	iterate_timer = 0.2
 	pattern_message = ""
 end
 
 function love.update(dt)
 
-	iterate_timer = iterate_timer - dt
-	if iterate_timer <= 0 then
-		if pause == false then
-			board:iterate()
-		end
-		local leftover = math.abs(iterate_timer)
-		iterate_timer = 0.2 - leftover
+	if pause == false then
+		board:iterate()
 	end
 
 	lovebird.update()
