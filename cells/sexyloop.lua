@@ -422,20 +422,6 @@ function Sexyloop:conditions ()
 
 
 	for k, v in pairs(Sexyloop.transitions) do
-		--[[
-		if v[1][1] == a and v[1][2] == b and v[1][3] == c and v[1][4] == d and v[1][5] == e then
-			return v[2]
-		end
-		if v[1][1] == a and v[1][2] == e and v[1][3] == b and v[1][4] == c and v[1][5] == d then
-			return v[2]
-		end
-		if v[1][1] == a and v[1][2] == d and v[1][3] == e and v[1][4] == b and v[1][5] == c then
-			return v[2]
-		end
-		if v[1][1] == a and v[1][2] == c and v[1][3] == d and v[1][4] == e and v[1][5] == b then
-			return v[2]
-		end
-		]]
 		if v[1][1] == a then
 			if v[1][2] == b then
 				if v[1][3] == c then
@@ -634,10 +620,3 @@ function Sexyloop:neighbourhood_state ()
 
 	return self.state, a,b,c,d
 end
-
-
-
-
-
-
-
